@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Ticket;
+
 class Category extends Model
 {
     //
@@ -14,6 +14,7 @@ class Category extends Model
         'name',
         'description',
     ];
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);

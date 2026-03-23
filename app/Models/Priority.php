@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Priority extends Model
 {
@@ -15,7 +14,7 @@ class Priority extends Model
         'name',
         'description',
     ];
-    
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);

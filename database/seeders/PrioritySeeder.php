@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Priority;
+use Illuminate\Database\Seeder;
 
 class PrioritySeeder extends Seeder
 {
@@ -14,12 +13,11 @@ class PrioritySeeder extends Seeder
     public function run(): void
     {
         //
-          $priorities = [
+        $priorities = [
             ['name' => 'low'],
             ['name' => 'medium'],
             ['name' => 'high'],
         ];
-        
 
         foreach ($priorities as $priority) {
             Priority::firstOrCreate($priority);

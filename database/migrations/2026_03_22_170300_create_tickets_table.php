@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('status_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamp('resolved_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

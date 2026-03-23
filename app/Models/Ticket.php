@@ -4,16 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Category;
-use App\Models\Priority;
-use App\Models\Status;
-use App\Models\Reply;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ticket extends Model
 {
     //
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'subject',
@@ -56,4 +52,15 @@ class Ticket extends Model
         return $this->hasMany(Reply::class);
     }
 
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachmentable');
+    }
+
+    protected static function booted(): void
+    {
+        static::forceDeleted(function (Ticket $ticket) {
+            $ticket->attachments()->each->delete();
+        });
+    }
 }
